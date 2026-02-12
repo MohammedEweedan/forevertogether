@@ -1,5 +1,5 @@
-import ValentineGame from "@/components/ValentineGame";
+import MusicApp from "@/components/MusicApp";
 
 export default function Home() {
-  return <ValentineGame />;
+  return <MusicApp />;
 }

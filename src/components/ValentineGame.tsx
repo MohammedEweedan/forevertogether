@@ -3,6 +3,7 @@
 import { useState, useCallback, useRef } from "react";
 import Celebration from "./Celebration";
 import YouTubeAudio from "./YouTubeAudio";
+import MusicApp from "./MusicApp";
 
 type Stage =
   | "quiz"
@@ -97,13 +98,6 @@ const BG_HEARTS = Array.from({ length: 20 }, (_, i) => {
   };
 });
 
-const SONGS = [
-  { id: "X_uoq5xCaFc", title: "Song 1 🎵" },
-  { id: "Iy-dJwHVX84", title: "Song 2 🎶" },
-  { id: "p-Z3YrHJ1sU", title: "Song 3 💕" },
-  { id: "yK0l88z879A", title: "Song 4 🎵" },
-];
-
 const STAGE_ANIM: Record<string, string> = {
   quiz: "stage-slide-up",
   math: "stage-flip-in",
@@ -128,7 +122,6 @@ export default function ValentineGame() {
   const [birthdayError, setBirthdayError] = useState(false);
   const [noClickCount, setNoClickCount] = useState(0);
   const [showWrongQuiz, setShowWrongQuiz] = useState(false);
-  const [songIndex, setSongIndex] = useState(0);
   const cardRef = useRef<HTMLDivElement>(null);
 
   const handleMouseMove = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
@@ -220,6 +213,15 @@ export default function ValentineGame() {
   };
 
   const currentQ = QUIZ_QUESTIONS[quizIndex];
+
+  if (stage === "celebration") {
+    return (
+      <div className="music-app-takeover">
+        <Celebration />
+        <MusicApp />
+      </div>
+    );
+  }
 
   return (
     <div className="game-wrapper">
@@ -471,65 +473,6 @@ export default function ValentineGame() {
           </div>
         )}
 
-        {/* ─── CELEBRATION ─── */}
-        {stage === "celebration" && (
-          <div className="game-stage celebration-stage">
-            <Celebration />
-            <div className="celebration-content">
-              <h2 className="celebration-title">
-                YESSS! 🎉💖🥳
-              </h2>
-              <p className="celebration-text">
-                I knew you&apos;d say yes!<br />
-                You&apos;re mine forever and ever, my love 💍❤️🫶🏼
-              </p>
-              <p className="celebration-text-small">
-                Happy Valentine&apos;s Forever, bobo 💕
-              </p>
-              <div className="celebration-ring">💍</div>
-
-              <div className="jukebox">
-                <p className="jukebox-label">Our Songs 🎧</p>
-                <div className="jukebox-carousel">
-                  <button
-                    className="jukebox-arrow"
-                    onClick={() => setSongIndex((i) => (i - 1 + SONGS.length) % SONGS.length)}
-                  >
-                    ◀
-                  </button>
-                  <div className="jukebox-player">
-                    <p className="jukebox-title">{SONGS[songIndex].title}</p>
-                    <iframe
-                      key={SONGS[songIndex].id}
-                      width="100%"
-                      height="80"
-                      src={`https://www.youtube-nocookie.com/embed/${SONGS[songIndex].id}?controls=1&modestbranding=1&rel=0&playsinline=1`}
-                      title={SONGS[songIndex].title}
-                      allow="autoplay; encrypted-media"
-                      referrerPolicy="strict-origin-when-cross-origin"
-                      style={{ borderRadius: "14px", border: "none" }}
-                    />
-                  </div>
-                  <button
-                    className="jukebox-arrow"
-                    onClick={() => setSongIndex((i) => (i + 1) % SONGS.length)}
-                  >
-                    ▶
-                  </button>
-                </div>
-                <div className="jukebox-dots">
-                  {SONGS.map((_, i) => (
-                    <button
-                      key={i}
-                      className={`jukebox-dot ${i === songIndex ? "active" : ""}`}
-                      onClick={() => setSongIndex(i)}
-                    />
-                  ))}
-                </div>
-              </div>
-            </div>
-          </div>
-        )}
       </div>
     </div>
   );
