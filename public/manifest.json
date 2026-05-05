@@ -1,8 +1,8 @@
 {
-  "name": "Forever Music",
-  "short_name": "Forever Music",
-  "description": "Our love playlist — forever together 💕",
-  "start_url": "/",
+  "name": "M+R 💕",
+  "short_name": "M+R",
+  "description": "Our love story — M+R 💕",
+  "start_url": "/bobo",
   "display": "standalone",
   "background_color": "#0a0a0a",
   "theme_color": "#821d30",

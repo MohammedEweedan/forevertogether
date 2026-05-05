@@ -13,8 +13,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Forever Music",
-  description: "Our love playlist — forever together 💕",
+  title: " M+R 💕",
+  description: "Our love story — M+R 💕",
   manifest: "/manifest.json",
   icons: {
     icon: "/logo.svg",
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
   appleWebApp: {
     capable: true,
     statusBarStyle: "black-translucent",
-    title: "Forever Music",
+    title: "M+R 💕",
   },
 };
 
