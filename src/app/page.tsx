@@ -1,5 +1,5 @@
-import LoveLetter from "@/components/LoveLetter";
+import Proposal from "@/components/Proposal";
 
 export default function Home() {
-  return <LoveLetter />;
+  return <Proposal />;
 }

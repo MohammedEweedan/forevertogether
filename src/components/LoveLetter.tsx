@@ -330,7 +330,7 @@ export default function LoveLetter() {
                 You walked in and made the whole world make sense.
                 And I&apos;ve been falling for you more deeply every single day since.
               </p>
-              <p className="ll-sig">— Moe 💕</p>
+              <p className="ll-sig">— Your loving husband, best friend and partner 💕</p>
             </div>
           </div>
         </section>
